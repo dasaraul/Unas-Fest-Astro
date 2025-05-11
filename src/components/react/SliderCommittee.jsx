@@ -23,7 +23,7 @@ const MemberDrawer = ({ member, isOpen, onClose }) => {
                 {member.role}
               </p>
               <p className="md:w-[80%] font-normal">
-                {member.description}
+                {member.description || "Informasi tidak tersedia"}
               </p>
             </div>
           </div>
@@ -31,7 +31,7 @@ const MemberDrawer = ({ member, isOpen, onClose }) => {
           {member.member && member.member.length > 0 && (
             <div className="mx-5 md:mx-44 mt-14 md:flex md:gap-4 z-50">
               <div className="font-bold text-2xl mb-5 md:text-3xl md:mr-28 text-black uppercase">
-                Member List
+                Daftar Anggota
               </div>
               <div className="flex flex-col gap-2 text-start w-full">
                 {member.member.map((m, idx) => (
@@ -54,10 +54,18 @@ const MemberDrawer = ({ member, isOpen, onClose }) => {
   );
 };
 
-const SliderCommittee = ({ members, maxWidth = 400, isDPM = true, responsivePagination = false, hovered = true }) => {
+const SliderCommittee = ({ members = [], maxWidth = 400, isDPM = true, responsivePagination = false, hovered = true }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  if (!members || members.length === 0) {
+    return (
+      <div className="text-center p-8">
+        <p className="text-xl">Data anggota belum tersedia.</p>
+      </div>
+    );
+  }
 
   const handleToggle = (member) => {
     setSelectedMember(member);
@@ -81,7 +89,7 @@ const SliderCommittee = ({ members, maxWidth = 400, isDPM = true, responsivePagi
       >
         {members.map((member, index) => (
           <SwiperSlide
-            key={member.id}
+            key={member.id || index}
             className={`mx-auto`}
             style={{ maxWidth: `${maxWidth}px` }}
             onMouseEnter={() => setHoveredIndex(index)}
@@ -92,7 +100,7 @@ const SliderCommittee = ({ members, maxWidth = 400, isDPM = true, responsivePagi
                 <div className="relative flex flex-col text-left">
                   <div
                     className="relative -mb-5 flex aspect-[4/6] w-full items-end bg-cover bg-center"
-                    style={{ backgroundImage: `url(${member.image.src})` }}
+                    style={{ backgroundImage: `url(${member.image?.src || ''})` }}
                   >
                     <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0)]"></div>
 
@@ -113,7 +121,7 @@ const SliderCommittee = ({ members, maxWidth = 400, isDPM = true, responsivePagi
                                 className="cursor-pointer text-black underline"
                                 onClick={() => handleToggle(member)}
                               >
-                                Open...
+                                Lihat Selengkapnya...
                               </button>
                             </div>
                           </div>

@@ -8,35 +8,39 @@ interface Props {
   faqs: FaqItem[];
 }
 
-const { faqs } = Astro.props;
+const { faqs = [] } = Astro.props;
 ---
 
 <div>
-  <div class="accordion">
-    {faqs.map((faq, index) => (
-      <div class="accordion-item">
-        <button
-          id={`accordion-button-${index}`}
-          aria-expanded="false"
-          class="w-full cursor-pointer text-start font-inter text-lg font-semibold"
-        >
-          <span class="accordion-title">{faq.question}</span>
-          <span class="icon" aria-hidden="true"></span>
-        </button>
-        <div class="accordion-content">
-          {Array.isArray(faq.answer) ? (
-            <ul class="list-inside list-disc text-start text-lg font-semibold opacity-70">
-              {faq.answer.map((point) => (
-                <li>{point}</li>
-              ))}
-            </ul>
-          ) : (
-            <p class="text-start text-lg font-semibold opacity-70" set:html={faq.answer} />
-          )}
+  {faqs.length > 0 ? (
+    <div class="accordion">
+      {faqs.map((faq, index) => (
+        <div class="accordion-item">
+          <button
+            id={`accordion-button-${index}`}
+            aria-expanded="false"
+            class="w-full cursor-pointer text-start font-inter text-lg font-semibold"
+          >
+            <span class="accordion-title">{faq.question}</span>
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            {Array.isArray(faq.answer) ? (
+              <ul class="list-inside list-disc text-start text-lg font-semibold opacity-70">
+                {faq.answer.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            ) : (
+              <p class="text-start text-lg font-semibold opacity-70" set:html={faq.answer} />
+            )}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
+      ))}
+    </div>
+  ) : (
+    <p class="text-center p-4">Informasi FAQ belum tersedia.</p>
+  )}
 </div>
 
 <style>
@@ -120,12 +124,14 @@ const { faqs } = Astro.props;
 </style>
 
 <script>
-  const accordionButtons = document.querySelectorAll('.accordion button');
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionButtons = document.querySelectorAll('.accordion button');
 
-  accordionButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const isExpanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+    accordionButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+      });
     });
   });
 </script>

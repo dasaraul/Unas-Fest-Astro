@@ -4,59 +4,62 @@ import shafa from '../assets/images/about-us/committee/shafa.webp';
 // DEPUTY PROJECT MANAGER
 import taqi from '../assets/images/about-us/committee/taqi.jpg';
 import adel from '../assets/images/about-us/committee/adel.webp';
-import ardi from '../assets/images/about-us/committee/ardi.webp';
+// import ardi from '../assets/images/about-us/committee/ardi.webp'; // File tidak ditemukan
 
 // LIAISON OFFICER
-import darma from '../assets/images/about-us/committee/darma.webp';
-import erika from '../assets/images/about-us/committee/erika.jpg';
-import jasmine from '../assets/images/about-us/committee/jasmine.jpg';
+// import darma from '../assets/images/about-us/committee/darma.webp'; // File tidak ditemukan
+// import erika from '../assets/images/about-us/committee/erika.jpg'; // File tidak ditemukan
+// import jasmine from '../assets/images/about-us/committee/jasmine.jpg'; // File tidak ditemukan
 
 // PUBLIC RELATION
-import deva from '../assets/images/about-us/committee/deva.webp';
-import inara from '../assets/images/about-us/committee/inara.webp';
-import ajis from '../assets/images/about-us/committee/ajis.webp';
+// import deva from '../assets/images/about-us/committee/deva.webp'; // File tidak ditemukan
+// import inara from '../assets/images/about-us/committee/inara.webp'; // File tidak ditemukan
+// import ajis from '../assets/images/about-us/committee/ajis.webp'; // File tidak ditemukan
 
 // MULTIMEDIA & DOCUMENTATION
-import rizki from '../assets/images/about-us/committee/rizki.jpg';
-import nizzam from '../assets/images/about-us/committee/nizzam.webp';
-import wendi from '../assets/images/about-us/committee/wendi.webp';
+// import rizki from '../assets/images/about-us/committee/rizki.jpg'; // File tidak ditemukan
+// import nizzam from '../assets/images/about-us/committee/nizzam.webp'; // File tidak ditemukan
+// import wendi from '../assets/images/about-us/committee/wendi.webp'; // File tidak ditemukan
 
 // ACCOMMODATION
-import amel from '../assets/images/about-us/committee/amel.webp';
-import widya from '../assets/images/about-us/committee/widya.webp';
-import amira from '../assets/images/about-us/committee/amira.webp';
+// import amel from '../assets/images/about-us/committee/amel.webp'; // File tidak ditemukan
+// import widya from '../assets/images/about-us/committee/widya.webp'; // File tidak ditemukan
+// import amira from '../assets/images/about-us/committee/amira.webp'; // File tidak ditemukan
 
 // SECRETARY
-import dara from '../assets/images/about-us/committee/dara.webp';
-import sahra from '../assets/images/about-us/committee/sahra.webp';
+// import dara from '../assets/images/about-us/committee/dara.webp'; // File tidak ditemukan
+// import sahra from '../assets/images/about-us/committee/sahra.webp'; // File tidak ditemukan
 
 // TRANSPORTATION
-import fiki from '../assets/images/about-us/committee/fiki.webp';
-import rafi from '../assets/images/about-us/committee/rafi.webp';
+// import fiki from '../assets/images/about-us/committee/fiki.webp'; // File tidak ditemukan
+// import rafi from '../assets/images/about-us/committee/rafi.webp'; // File tidak ditemukan
 
 // CURATOR AND EXHIBITION
-import tifani from '../assets/images/about-us/committee/tifani.webp';
-import muflih from '../assets/images/about-us/committee/muflih.webp';
+// import tifani from '../assets/images/about-us/committee/tifani.webp'; // File tidak ditemukan
+// import muflih from '../assets/images/about-us/committee/muflih.webp'; // File tidak ditemukan
 
 // KDBI
-import nurul from '../assets/images/about-us/committee/nurul.webp';
-import andika from '../assets/images/about-us/committee/andika.webp';
-import annisa from '../assets/images/about-us/committee/annisa.webp';
+// import nurul from '../assets/images/about-us/committee/nurul.webp'; // File tidak ditemukan
+// import andika from '../assets/images/about-us/committee/andika.webp'; // File tidak ditemukan
+// import annisa from '../assets/images/about-us/committee/annisa.webp'; // File tidak ditemukan
 
 // EDC
-import aisyah from '../assets/images/about-us/committee/aisyah.webp';
-import salsa from '../assets/images/about-us/committee/salsa.webp';
-import wulan from '../assets/images/about-us/committee/wulan.webp';
+// import aisyah from '../assets/images/about-us/committee/aisyah.webp'; // File tidak ditemukan
+// import salsa from '../assets/images/about-us/committee/salsa.webp'; // File tidak ditemukan
+// import wulan from '../assets/images/about-us/committee/wulan.webp'; // File tidak ditemukan
 
 // SCIENTIFIC PAPER COMPETITION
-import maulana from '../assets/images/about-us/committee/maulana.webp';
-import sasha from '../assets/images/about-us/committee/sasha.webp';
-import atha from '../assets/images/about-us/committee/atha.webp';
+// import maulana from '../assets/images/about-us/committee/maulana.webp'; // File tidak ditemukan
+// import sasha from '../assets/images/about-us/committee/sasha.webp'; // File tidak ditemukan
+// import atha from '../assets/images/about-us/committee/atha.webp'; // File tidak ditemukan
 
 // STUDENT MOVIE COMPETITION
-import dian from '../assets/images/about-us/committee/dian.webp';
-import raihana from '../assets/images/about-us/committee/raihana.webp';
-import dito from '../assets/images/about-us/committee/dito.webp';
+// import dian from '../assets/images/about-us/committee/dian.webp'; // File tidak ditemukan
+// import raihana from '../assets/images/about-us/committee/raihana.webp'; // File tidak ditemukan
+// import dito from '../assets/images/about-us/committee/dito.webp'; // File tidak ditemukan
+
+// Placeholder image untuk gambar yang tidak ditemukan
+import placeholderImage from '../assets/images/about-us/avatar-placeholder.png';
 
 export const allCommittees = [
   // DEPUTY PROJECT MANAGER
@@ -80,7 +83,7 @@ export const allCommittees = [
     name: "Ardi Saputra",
     role: "Deputy Project Manager",
     division: "DPM",
-    image: ardi,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -90,7 +93,7 @@ export const allCommittees = [
     name: "Darma Wijaya",
     role: "Liaison Officer",
     division: "LO",
-    image: darma,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -98,7 +101,7 @@ export const allCommittees = [
     name: "Erika Meidina",
     role: "Liaison Officer",
     division: "LO",
-    image: erika,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -106,7 +109,7 @@ export const allCommittees = [
     name: "Jasmine Ramadhani",
     role: "Liaison Officer",
     division: "LO",
-    image: jasmine,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -116,7 +119,7 @@ export const allCommittees = [
     name: "Deva Ferdiansyah",
     role: "Public Relation",
     division: "PR",
-    image: deva,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -124,7 +127,7 @@ export const allCommittees = [
     name: "Inara Putri",
     role: "Public Relation",
     division: "PR",
-    image: inara,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -132,7 +135,7 @@ export const allCommittees = [
     name: "Abdul Azis",
     role: "Public Relation",
     division: "PR",
-    image: ajis,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -142,7 +145,7 @@ export const allCommittees = [
     name: "Rizki Ramadhan",
     role: "Multimedia & Documentation",
     division: "MM",
-    image: rizki,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -150,7 +153,7 @@ export const allCommittees = [
     name: "Nizzam Al-Farizi",
     role: "Multimedia & Documentation",
     division: "MM",
-    image: nizzam,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -158,7 +161,7 @@ export const allCommittees = [
     name: "Wendi Kurniawan",
     role: "Multimedia & Documentation",
     division: "MM",
-    image: wendi,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -168,7 +171,7 @@ export const allCommittees = [
     name: "Amelia Putri",
     role: "Accommodation",
     division: "ACC",
-    image: amel,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -176,7 +179,7 @@ export const allCommittees = [
     name: "Widya Sari",
     role: "Accommodation",
     division: "ACC",
-    image: widya,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -184,7 +187,7 @@ export const allCommittees = [
     name: "Amira Zahra",
     role: "Accommodation",
     division: "ACC",
-    image: amira,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -194,7 +197,7 @@ export const allCommittees = [
     name: "Dara Anggraini",
     role: "Secretary",
     division: "SCR",
-    image: dara,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -202,7 +205,7 @@ export const allCommittees = [
     name: "Sahra Maulida",
     role: "Secretary",
     division: "SCR",
-    image: sahra,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -212,7 +215,7 @@ export const allCommittees = [
     name: "Fiki Ardiansyah",
     role: "Transportation",
     division: "TRANS",
-    image: fiki,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -220,7 +223,7 @@ export const allCommittees = [
     name: "Rafi Ahmad",
     role: "Transportation",
     division: "TRANS",
-    image: rafi,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -230,7 +233,7 @@ export const allCommittees = [
     name: "Tifani Maharani",
     role: "Curator and Exhibition",
     division: "CUREB",
-    image: tifani,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -238,7 +241,7 @@ export const allCommittees = [
     name: "Muhammad Muflih",
     role: "Curator and Exhibition",
     division: "CUREB",
-    image: muflih,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -248,7 +251,7 @@ export const allCommittees = [
     name: "Nurul Fadilah",
     role: "KDBI",
     division: "KDBI",
-    image: nurul,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -256,7 +259,7 @@ export const allCommittees = [
     name: "Andika Pratama",
     role: "KDBI",
     division: "KDBI",
-    image: andika,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -264,7 +267,7 @@ export const allCommittees = [
     name: "Annisa Rahma",
     role: "KDBI",
     division: "KDBI",
-    image: annisa,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -274,7 +277,7 @@ export const allCommittees = [
     name: "Aisyah Fitri",
     role: "EDC",
     division: "EDC",
-    image: aisyah,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -282,7 +285,7 @@ export const allCommittees = [
     name: "Salsabila Putri",
     role: "EDC",
     division: "EDC",
-    image: salsa,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -290,7 +293,7 @@ export const allCommittees = [
     name: "Wulandari",
     role: "EDC",
     division: "EDC",
-    image: wulan,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -300,7 +303,7 @@ export const allCommittees = [
     name: "Maulana Ibrahim",
     role: "Scientific Paper Competition",
     division: "SCP",
-    image: maulana,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -308,7 +311,7 @@ export const allCommittees = [
     name: "Sasha Kirana",
     role: "Scientific Paper Competition",
     division: "SCP",
-    image: sasha,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -316,7 +319,7 @@ export const allCommittees = [
     name: "Atha Rizky",
     role: "Scientific Paper Competition",
     division: "SCP",
-    image: atha,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -326,7 +329,7 @@ export const allCommittees = [
     name: "Dian Ayu",
     role: "Student Movie Competition",
     division: "SMC",
-    image: dian,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -334,7 +337,7 @@ export const allCommittees = [
     name: "Raihana Putri",
     role: "Student Movie Competition",
     division: "SMC",
-    image: raihana,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   },
@@ -342,7 +345,7 @@ export const allCommittees = [
     name: "Dito Pratama",
     role: "Student Movie Competition",
     division: "SMC",
-    image: dito,
+    image: placeholderImage, // File tidak ditemukan, gunakan placeholder
     linkedin: "#",
     instagram: "#"
   }

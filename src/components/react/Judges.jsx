@@ -29,7 +29,7 @@ const JudgeDrawer = ({ judge, isOpen, onClose }) => {
           
           <div className="relative flex flex-wrap justify-center gap-5 md:flex-nowrap">
             <img
-              src={judge.image.src}
+              src={judge.image?.src || ''}
               alt={judge.name}
               className="h-[250px] w-[200px] object-cover md:ml-12 md:h-[400px] md:w-[300px] lg:h-[500px] lg:w-[400px]"
             />
@@ -136,7 +136,7 @@ const JudgeDrawer = ({ judge, isOpen, onClose }) => {
   );
 };
 
-const Judges = ({ judgesData }) => {
+const Judges = ({ judgesData = [] }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedJudge, setSelectedJudge] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -151,6 +151,15 @@ const Judges = ({ judgesData }) => {
     setIsDrawerOpen(false);
     document.body.style.overflow = 'auto';
   };
+
+  // Jika judgesData kosong, tampilkan placeholder
+  if (!judgesData || judgesData.length === 0) {
+    return (
+      <div className="text-center p-8">
+        <p className="text-xl">Data juri belum tersedia.</p>
+      </div>
+    );
+  }
 
   const swiperConfig = {
     0: { slidesPerView: 1 },
@@ -186,7 +195,7 @@ const Judges = ({ judgesData }) => {
               <div className="relative flex flex-col items-center gap-y-4 text-left grayscale hover:filter-none md:filter">
                 <div>
                   <img
-                    src={judge.image.src}
+                    src={judge.image?.src || ''}
                     alt={judge.name}
                     className="h-[430px] w-full object-cover md:h-[500px] md:w-[400px] lg:px-4"
                   />
@@ -234,3 +243,5 @@ const Judges = ({ judgesData }) => {
     </div>
   );
 };
+
+export default Judges;

@@ -31,13 +31,15 @@ const duplicatedSlides = [...slides, ...slides];
         >
           <div class="flex h-full flex-col items-center justify-center bg-black">
             <div class="flex h-full items-center gap-4 font-bungee">
-              <Image
-                src={item.icon}
-                alt="icons"
-                width={44}
-                height={29}
-                class="object-contain"
-              />
+              {item.icon && (
+                <Image
+                  src={item.icon}
+                  alt="icons"
+                  width={44}
+                  height={29}
+                  class="object-contain"
+                />
+              )}
               <span class="whitespace-nowrap font-bungee text-[20px] font-medium text-page-white md:text-[24px]">
                 {item.text}
               </span>

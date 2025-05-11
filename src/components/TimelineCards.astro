@@ -14,38 +14,175 @@ interface Props {
   timelines: Timeline[];
 }
 
-const { title, description, timelines } = Astro.props;
+const { title, description, timelines = [] } = Astro.props;
 ---
 
-<div class="w-full">
-  <div class="flex items-center gap-2">
-    <h2 class="text-3xl font-bold">{title}</h2>
-  </div>
-  <p class="mt-2 text-gray-600">{description}</p>
-  
-  <div class="mt-8 flex w-full flex-col flex-nowrap gap-4 overflow-x-auto md:flex-row">
-    {timelines.map((timeline) => (
-      <div class="flex h-[240px] w-[320px] max-w-[320px] flex-shrink-0 flex-col rounded-2xl border p-4 shadow-md md:h-[200px] md:w-[250px] md:max-w-[250px]">
-        <div class="mb-4 flex items-center justify-between">
-          <div class="flex flex-col">
-            <span 
-              class="text-2xl font-bold" 
-              style={{ color: timeline.color }}
+<section class="relative m-auto mb-12 mt-20 w-full max-w-screen-xl lg:w-[90%] overflow-x-hidden">
+  <div class="overflow-hidden rounded-none pb-2 text-center">
+    <h2 class="text-3xl font-semibold leading-normal tracking-wide md:text-4xl lg:text-5xl font-bungee">
+      {title}
+    </h2>
+    <p class="mb-16 text-sm font-normal leading-normal tracking-wide lg:text-xl">
+      {description}
+    </p>
+    
+    {timelines.length > 0 ? (
+      <div class="h-full max-h-[1000px] w-full p-0">
+        <div class="timeline-container relative w-full">
+          {timelines.map((timeline, index) => (
+            <div
+              class={`timeline relative md:w-[50%] py-2.5 sm:px-12 md:px-1 lg:px-12 ${
+                index % 2 === 0 ? "right-timeline" : "left-timeline"
+              }`}
             >
-              {timeline.month}
-            </span>
-            <span class="text-lg font-medium">{timeline.date}, {timeline.year}</span>
-          </div>
-          <div 
-            class="h-[30px] w-[30px] rounded-full" 
-            style={{ backgroundColor: timeline.color }}
-          ></div>
-        </div>
-        <div>
-          <h3 class="font-bold">{timeline.title}</h3>
-          <p class="mt-2 text-sm text-gray-600">{timeline.description}</p>
+              <div class="flex md:py-5 md:mx-10 relative">
+                {index % 2 === 0 ? (
+                  <div class="flex w-full md:min-h-28">
+                    <div
+                      class="w-3/12 flex flex-col justify-center items-center font-bungee -space-y-1.5 text-white datebox"
+                      style={`background-color: ${timeline.color};`}
+                    >
+                      <h2 class="text-xs md:text-sm">{timeline.month}</h2>
+                      <h1 class="text-3xl lg:text-5xl">{timeline.date}</h1>
+                      <h3 class="text-xs">{timeline.year}</h3>
+                    </div>
+                    <div
+                      class="w-9/12 font-inter text-left p-4 flex flex-col justify-center items-start descriptionbox"
+                    >
+                      <h1 class="text-lg md:text-xl lg:text-2xl font-bold">{timeline.title}</h1>
+                      <h3 class="text-sm md:text-base font-semibold">{timeline.description}</h3>
+                    </div>
+                  </div>
+                ) : (
+                  <div class="flex w-full sm:flex-row-reverse md:min-h-28 md:flex-row">
+                    <div
+                      class="w-9/12 font-inter text-left p-4 flex flex-col justify-center items-start descriptionbox"
+                    >
+                      <h1 class="text-lg md:text-xl lg:text-2xl font-bold">{timeline.title}</h1>
+                      <h3 class="text-sm lg:text-md font-semibold">{timeline.description}</h3>
+                    </div>
+                    <div
+                      class="w-3/12 flex flex-col justify-center items-center py-5 font-bungee -space-y-1.5 text-white datebox"
+                      style={`background-color: ${timeline.color};`}
+                    >
+                      <h2 class="text-xs md:text-sm">{timeline.month}</h2>
+                      <h1 class="text-3xl lg:text-5xl">{timeline.date}</h1>
+                      <h3 class="text-xs">{timeline.year}</h3>
+                    </div>
+                  </div>
+                )}
+                <span
+                  class="arrow"
+                  style={`border-bottom-color: ${timeline.color}`}
+                ></span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    ))}
+    ) : (
+      <p class="text-center p-4">Jadwal timeline belum tersedia.</p>
+    )}
   </div>
-</div>
+</section>
+
+<style>
+.timeline-container::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background-color: black;
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: -1;
+  animation: moveline 6s linear forwards;
+}
+
+@keyframes moveline {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.timeline {
+  animation: movedown 1s linear forwards;
+  opacity: 0;
+}
+
+@keyframes movedown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.left-timeline {
+  left: 0;
+}
+
+.right-timeline {
+  left: 50%;
+}
+
+.left-timeline .arrow {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 26px;
+  z-index: -1;
+  border-bottom: 40px solid;
+  border-right: 50px solid transparent;
+  right: -35px;
+  border-radius: 10%;
+}
+
+.right-timeline .arrow {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 26px;
+  z-index: -1;
+  border-bottom: 40px solid;
+  border-left: 50px solid transparent;
+  border-radius: 2px;
+  left: -35px;
+}
+
+/* Tambahkan shadow pada box tanggal */
+.datebox {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+/* Tambahkan shadow pada box deskripsi */
+.descriptionbox {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+@media screen and (max-width: 769px) {
+  .timeline-container::after {
+    left: 10px;
+  }
+  .right-timeline {
+    left: 0;
+  }
+  .left-timeline .arrow {
+    border-bottom: 30px solid;
+    border-left: 50px solid transparent;
+    left: -30px;
+  }
+  .right-timeline .arrow {
+    border-bottom: 30px solid;
+    border-left: 50px solid transparent;
+    left: -30px;
+  }
+}
+</style>

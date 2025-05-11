@@ -14,10 +14,10 @@ import wakilRektorAkademikImg from '../assets/images/steering-committees/warek_a
 import wakilRektorAdministrasiImg from '../assets/images/steering-committees/warek_administrasi.png';
 import wakilRektorPenelitianImg from '../assets/images/steering-committees/warek_penelitian.png';
 // unas collaborate logo
-import hifiUnas from '../assets/images/about-us/hifi-unas-logo.png';
-import mmUnas from '../assets/images/about-us/MM-unas-logo.png';
-import unasTv from '../assets/images/about-us/unastv-logo.png';
-import unasRadio from '../assets/images/about-us/unasradio-logo.png';
+import hifiUnas from 'src/assets/images/about-us/hifi-unas-logo.png';
+import mmUnas from 'src/assets/images/about-us/MM-unas-logo.png';
+import unasTv from 'src/assets/images/about-us/unastv-logo.png';
+import unasRadio from 'src/assets/images/about-us/unasradio-logo.png';
 
 //MEDIA PARTNERSHIP
 import himasbisdig from '../assets/images/Partnership/himabisdig.jpg';

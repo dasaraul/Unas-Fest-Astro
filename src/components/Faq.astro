@@ -10,5 +10,12 @@ const { title } = Astro.props;
 ---
 
 <section class="relative m-auto pb-12 w-full max-w-screen-xl lg:w-[90%]">
-  <FaqSwiper client:load faqs={faqsData} title={title} />
+  <div class="overflow-hidden rounded-none pb-10 text-center pt-0">
+    <h2 class="text-3xl font-semibold leading-normal tracking-wide text-page-blue md:pb-20 md:text-5xl font-bungee">
+      {title}
+    </h2>
+    <div class="h-full w-full">
+      <FaqSwiper faqsData={faqsData} client:visible />
+    </div>
+  </div>
 </section>
