@@ -1,0 +1,14 @@
+---
+import { timelinesHome } from '../data/timelines.js';
+import TimelineCards from './TimelineCards.astro';
+---
+
+<div class="w-full">
+  <div class="flex items-center gap-2">
+    <TimelineCards
+      title="Activity Timeline"
+      description="Pay attention to the time and date"
+      timelines={timelinesHome}
+    />
+  </div>
+</div>

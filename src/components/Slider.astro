@@ -1,0 +1,11 @@
+---
+import SliderReact from './react/Slider.jsx';
+
+interface Props {
+  props: any[];
+}
+
+const { props } = Astro.props;
+---
+
+<SliderReact client:load requirements={props} />

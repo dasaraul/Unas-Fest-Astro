@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+import imgBottom from '../assets/images/gallery/videotron-kdbi.png';
+import imgTopRight from '../assets/images/gallery/kompetisi-debat.png';
+import imgBottomRight from '../assets/images/gallery/juara-lomba.png';
+import imgTopLeft from '../assets/images/gallery/videotron-kdbi2.png';
+import Button from './ui/Button.astro';
+---
+
+<div class="relative grid grid-cols-2 gap-4 md:grid-cols-3">
+  <!-- Top left image -->
+  <div class="col-span-1">
+    <Image
+      src={imgTopLeft}
+      alt="Event 1"
+      width={300}
+      height={200}
+      class="h-auto w-full"
+    />
+  </div>
+  
+  <!-- Top middle text -->
+  <div class="col-span-1 hidden flex-col items-start md:flex">
+    <h1 class="font-bungee text-3xl font-medium uppercase opacity-50 md:text-[44px] lg:text-6xl">
+      let&apos;s join
+    </h1>
+    <h1 class="font-bungee text-3xl font-medium uppercase opacity-70 md:text-[44px] lg:text-6xl">
+      let&apos;s join
+    </h1>
+    <h1 class="font-bungee text-3xl font-medium uppercase md:text-[44px] lg:text-6xl">
+      let&apos;s join <br /> unas fest <br /> competition
+    </h1>
+  </div>
+  
+  <!-- Top right image -->
+  <div class="col-span-1">
+    <Image
+      src={imgTopRight}
+      alt="Event 2"
+      width={300}
+      height={200}
+      class="h-auto w-full"
+    />
+  </div>
+  
+  <div class="col-span-2 flex flex-1 items-start gap-x-1 md:col-span-3 md:gap-x-4">
+    <!-- Bottom left text -->
+    <div class="hidden flex-col items-start md:flex md:w-[400px] md:text-xl">
+      <p>
+        Flashbacks of the Universitas Nasional Festival
+        <span class="hidden lg:flex">
+          competition held from December 4, 2023 to December 20, 2023.
+        </span>
+      </p>
+    </div>
+    
+    <!-- Bottom middle image -->
+    <div class="w-full">
+      <Image
+        src={imgBottom}
+        alt="Event 3"
+        width={300}
+        height={200}
+        class="h-auto w-full"
+      />
+    </div>
+    
+    <!-- Bottom right image -->
+    <div class="flex w-full flex-col md:gap-2">
+      <Image
+        src={imgBottomRight}
+        alt="Event 4"
+        width={300}
+        height={200}
+        class="h-auto w-full"
+      />
+      <p class="hidden uppercase md:flex md:text-xl">unas fest 2023</p>
+    </div>
+  </div>
+  
+  <Button
+    href="/gallery"
+    asChild
+    size="lg"
+    class="absolute -bottom-2 left-0 rounded-none bg-page-btnBlue hover:bg-page-blue md:bottom-4"
+  >
+    <a class="flex items-center gap-2 px-5 py-3 md:px-16 md:py-8 lg:gap-6">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-play"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+      <span class="text-xs capitalize text-page-white md:text-[24px]">
+        see gallery
+      </span>
+    </a>
+  </Button>
+</div>

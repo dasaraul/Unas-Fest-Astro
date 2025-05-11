@@ -2,10 +2,15 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 
+// https://astro.build/config
 export default defineConfig({
   integrations: [
-    tailwind(),
-    react(), // Untuk komponen React yang tetap perlu interaktif
+    tailwind({
+      // Gunakan configurasi Tailwind yang sudah ada
+      config: { path: './tailwind.config.mjs' },
+    }),
+    react(), // Untuk komponen React yang dibutuhkan
   ],
-  site: 'https://unasfest.com',
+  // Tambahkan output: 'server' jika ingin SSR
+  // output: 'server',
 });

@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import Button from './ui/Button.astro';
+import mascotGroup from '../assets/images/mascots/mascots.png';
+---
+
+<div class="container mt-8 flex flex-col items-center justify-between gap-y-3 md:flex-row-reverse lg:flex-row">
+  <!-- Right section - Mascot Image -->
+  <div class="flex h-full w-full items-center justify-center md:w-3/5 lg:order-2 lg:w-2/5">
+    <Image
+      src={mascotGroup}
+      alt="mascot group"
+      width={392}
+      height={309}
+      class="h-auto w-full object-contain"
+    />
+  </div>
+  
+  <!-- Left section - Text and Button -->
+  <div class="order-2 flex h-full w-full flex-col items-start md:w-3/5 lg:order-1">
+    <h1 class="w-full whitespace-break-spaces font-bungee text-[39px] font-medium uppercase leading-tight text-page-blue md:text-[53px] lg:w-4/5">
+      Sign Up Now for the competition
+    </h1>
+    <p class="mt-4 w-full text-xl font-semibold md:w-[90%]">
+      The Universitas Nasional Festival 2024 (UNAS FEST 2024) is one of the
+      annual events held to commemorate and celebrate the 75th anniversary
+      of Dies Natalis Universitas Nasional.
+    </p>
+    <Button
+      href="#activity-slider-section"
+      class="mt-4 h-[50px] w-[150px] rounded-none text-xl font-semibold capitalize md:h-[60px] md:w-[200px]"
+    >
+      see more
+    </Button>
+  </div>
+</div>

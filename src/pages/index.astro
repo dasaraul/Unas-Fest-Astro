@@ -1,16 +1,67 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
+import InfiniteSlidingComponent from '../components/InfiniteSlidingComponent.astro';
+import ActivitySlider from '../components/ActivitySlider.astro';
+import SpecialBanner from '../components/SpecialBanner.astro';
+import FinalisSMC from '../components/FinalisSMC.astro';
+import Benefit from '../components/Benefit.astro';
+import Gallery from '../components/Gallery.astro';
+import Timeline from '../components/Timeline.astro';
+import Faq from '../components/Faq.astro';
+import ContactHome from '../components/ContactHome.astro';
+import starIcon from '../assets/icons/star.png';
 
+// Infinite sliding props
+const infiniteSlidingProps = {
+  icon: starIcon,
+  text: "UNAS FEST 2024",
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="UNAS FEST 2024">
+  <main>
+    <!-- Hero -->
+    <Hero />
+    
+    <!-- Infinite Sliding Text -->
+    <div class="overflow-hidden pb-2 md:overflow-visible md:p-0">
+      <InfiniteSlidingComponent props={infiniteSlidingProps} />
+    </div>
+
+    <!-- Activities Slide -->
+    <div class="container mt-20 pr-0" id="activity-slider-section">
+      <ActivitySlider />
+    </div>
+    
+    <!-- Special Banner -->
+    <div class="container mt-20 flex items-center justify-center">
+      <SpecialBanner />
+    </div>
+
+    <!-- Uncomment after the finalist has been announced -->
+    <div class="mt-20">
+      <!-- Finalis SMC -->
+      <FinalisSMC />
+    </div>
+    
+    <div class="mt-20">
+      <!-- Benefit -->
+      <Benefit />
+    </div>
+    
+    <!-- Gallery Component -->
+    <div class="mx-auto mt-20 max-w-[1400px] px-3 md:container">
+      <Gallery />
+    </div>
+    
+    <!-- Timeline Component -->
+    <Timeline />
+    
+    <!-- FAQ Component -->
+    <Faq title="frequently asked questions" />
+    
+    <!-- Contact Component -->
+    <ContactHome />
+  </main>
+</MainLayout>

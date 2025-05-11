@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import unasfestLogo from '../assets/icons/unasfest-logo.png';
+import tiktokIcon from '../assets/icons/tiktok-icon.svg';
+import youtubeIcon from '../assets/icons/youtube-icon.svg';
+import instagramIcon from '../assets/icons/instagram-icon.svg';
+import linkedinIcon from '../assets/icons/LinkedIn-icon.svg';
+
+// Data untuk Footer
+const socialLinks = [
+  {
+    title: "tiktok link",
+    icon: tiktokIcon,
+    link: "https://www.tiktok.com/@unasfest?_t=8oGNsvgjGqH&_r=1",
+  },
+  {
+    title: "youtube link",
+    icon: youtubeIcon,
+    link: "https://www.youtube.com/@unasfest",
+  },
+  {
+    title: "instagram link",
+    icon: instagramIcon,
+    link: "https://www.instagram.com/unasfest",
+  },
+  {
+    title: "LinkedIn",
+    icon: linkedinIcon,
+    link: "https://www.linkedin.com/in/unas-fest-6b6287301/",
+  },
+];
+
+const quickLinks = [
+  { title: "Home", url: "/" },
+  { title: "Activities", url: "/#activities" },
+  { title: "Gallery", url: "/gallery" },
+  { title: "Partnership", url: "/partnership" },
+  { title: "About Us", url: "/about-us" },
+];
+
+const activitiesLinks = [
+  { title: "International Seminar", url: "/activities/international-seminar" },
+  { title: "English Debate Competition", url: "/activities/edc" },
+  { title: "Kompetisi Debat Bahasa Indonesia", url: "/activities/kdbi" },
+  { title: "Short Movie Competition", url: "/activities/smc" },
+  { title: "Scientific Paper Competition", url: "/activities/spc" },
+];
+
+const contactLinks = [
+  { title: "unasfest@gmail.com", url: "mailto:Unasfest@gmail.com" },
+  {
+    title: "Jl. Sawo Manila No.61, RT.14/RW.7, Pejaten Barat., Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520",
+    url: "https://maps.app.goo.gl/XDcCjiNwAqzMr5RF6",
+  },
+];
+---
+
+<footer class="bg-footer-wave bg-cover bg-right-bottom">
+  <div class="container mt-24 pb-32">
+    <div class="flex w-full flex-col items-center justify-center gap-y-6 lg:flex-row lg:items-start lg:justify-between">
+      <!-- Left section of the footer -->
+      <div class="mx-auto flex w-full max-w-[336px] flex-col items-center gap-y-6 md:mx-0">
+        <!-- Unasfest Logo -->
+        <div class="flex items-center">
+          <Image
+            src={unasfestLogo}
+            alt="unasfest logo"
+            width={218}
+            height={63}
+          />
+        </div>
+        <!-- Footer Social Media Links -->
+        <div class="flex w-[250px] items-center justify-between">
+          {socialLinks.map((link) => (
+            <a href={link.link} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={link.icon}
+                alt={link.title}
+                height={30}
+                width={30}
+                class="object-contain"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Right section of the footer -->
+      <div class="w-full flex justify-center mt-8 lg:mt-0 lg:justify-end gap-6 leading-6 mx-auto md:mx-0">
+        <!-- Quick Links Section -->
+        <div class="text-xl hidden md:flex flex-col items-start gap-6 w-fit lg:w-[178px]">
+          <h3 class="font-semibold">Quick Links</h3>
+          <div class="flex flex-col text-left gap-6">
+            {quickLinks.map((item) => (
+              <a
+                href={item.url}
+                class="hover:text-page-blue transition-colors"
+              >
+                {item.title}
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Activities Links Section -->
+        <div class="text-xl hidden md:flex flex-col items-start gap-6 w-fit lg:w-[178px] pl-6">
+          <h3 class="font-semibold">Activities</h3>
+          <div class="flex flex-col text-left gap-6">
+            {activitiesLinks.map((item) => (
+              <a
+                href={item.url}
+                class="hover:text-page-blue transition-colors"
+              >
+                {item.title}
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Contact Links Section -->
+        <div class="text-xl flex flex-col md:items-start items-center md:text-left text-center gap-6 w-[180px] lg:w-fit">
+          <h3 class="font-semibold">Contact</h3>
+          <div class="flex flex-col lg:text-left gap-6">
+            {contactLinks.map((item) => (
+              <div class="flex items-center lg:items-start gap-2">
+                <a
+                  href={item.url}
+                  class="max-w-[311px] w-full text-wrap hover:text-page-blue transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.title}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Separator line -->
+    <div class="my-10 w-full h-px bg-page-black"></div>
+    
+    <p class="text-center text-xl md:pl-7 md:text-left">
+      © Copyright UNAS FEST
+    </p>
+  </div>
+</footer>

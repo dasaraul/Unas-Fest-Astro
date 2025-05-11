@@ -1,0 +1,370 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+* {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .nav,
+  .nav-active {
+    @apply relative cursor-pointer;
+  }
+
+  .nav {
+    @apply font-medium text-black opacity-60;
+  }
+
+  .nav-active {
+    @apply font-bold text-active-blue;
+  }
+
+  .nav:hover {
+    @apply text-active-blue opacity-100;
+  }
+
+  .nav::after {
+    @apply absolute -bottom-2 left-0 h-1 w-[0%] rounded-sm bg-active-blue duration-300 content-[''];
+  }
+
+  .nav:hover::after {
+    @apply w-[90%];
+  }
+
+  .nav-active::after {
+    @apply absolute -bottom-2 left-0 h-1 w-[90%] rounded-sm bg-active-blue duration-100 content-[''];
+  }
+}
+
+.custom-pagination {
+  --swiper-pagination-color: white;
+  --swiper-pagination-fraction-color: inherit;
+  --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+  --swiper-pagination-progressbar-size: 4px;
+  --swiper-pagination-bullet-size: 20px;
+  --swiper-pagination-bullet-width: 20px;
+  --swiper-pagination-bullet-height: 20px;
+  --swiper-pagination-bullet-border-radius: none;
+  --swiper-pagination-bullet-inactive-color: rgb(255, 255, 255);
+  --swiper-pagination-bullet-inactive-opacity: 0.2;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 10px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  width: 100px;
+}
+
+.custom-pagination-home {
+  --swiper-pagination-color: #1f1e23;
+  --swiper-pagination-fraction-color: inherit;
+  --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+  --swiper-pagination-progressbar-size: 4px;
+  --swiper-pagination-bullet-size: 20px;
+  --swiper-pagination-bullet-width: 20px;
+  --swiper-pagination-bullet-height: 20px;
+  --swiper-pagination-bullet-border-radius: none;
+  --swiper-pagination-bullet-inactive-color: #dad6ce;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 10px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+}
+
+.custom-pagination-home .swiper-pagination-bullet-active {
+  width: 100px;
+}
+
+.custom-pagination-faq {
+  --swiper-pagination-color: #1f1e23;
+  --swiper-pagination-fraction-color: inherit;
+  --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+  --swiper-pagination-progressbar-size: 4px;
+  --swiper-pagination-bullet-size: 20px;
+  --swiper-pagination-bullet-width: 20px;
+  --swiper-pagination-bullet-height: 20px;
+  --swiper-pagination-bullet-border-radius: none;
+  --swiper-pagination-bullet-inactive-color: #dad6ce;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+}
+
+.custom-pagination-faq .swiper-pagination-bullet-active {
+  width: 100px;
+}
+
+.custom-pagination-judges {
+  --swiper-pagination-color: #1f1e23;
+  --swiper-pagination-fraction-color: inherit;
+  --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+  --swiper-pagination-progressbar-size: 4px;
+  --swiper-pagination-bullet-size: 20px;
+  --swiper-pagination-bullet-width: 20px;
+  --swiper-pagination-bullet-height: 20px;
+  --swiper-pagination-bullet-border-radius: none;
+  --swiper-pagination-bullet-inactive-color: #dad6ce;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+}
+
+.custom-pagination-judges .swiper-pagination-bullet-active {
+  width: 100px;
+}
+.custom-pagination-commitee {
+  --swiper-pagination-color: #1f1e23;
+  --swiper-pagination-fraction-color: inherit;
+  --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+  --swiper-pagination-progressbar-size: 4px;
+  --swiper-pagination-bullet-size: 20px;
+  --swiper-pagination-bullet-width: 20px;
+  --swiper-pagination-bullet-height: 20px;
+  --swiper-pagination-bullet-border-radius: none;
+  --swiper-pagination-bullet-inactive-color: #dad6ce;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+}
+
+.custom-pagination-commitee .swiper-pagination-bullet-active {
+  width: 100px;
+}
+
+
+@media screen and (max-width: 769px) {
+  .custom-pagination-faq {
+    --swiper-pagination-color: #1f1e23;
+    --swiper-pagination-fraction-color: inherit;
+    --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+    --swiper-pagination-progressbar-size: 4px;
+    --swiper-pagination-bullet-size: 10px;
+    --swiper-pagination-bullet-width: 10px;
+    --swiper-pagination-bullet-height: 10px;
+    --swiper-pagination-bullet-border-radius: none;
+    --swiper-pagination-bullet-inactive-color: #dad6ce;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 5px;
+    --swiper-pagination-bullet-vertical-gap: 6px;
+  }
+
+  .custom-pagination-faq .swiper-pagination-bullet-active {
+    width: 50px;
+  }
+
+  .custom-pagination-judges {
+    --swiper-pagination-color: #1f1e23;
+    --swiper-pagination-fraction-color: inherit;
+    --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+    --swiper-pagination-progressbar-size: 4px;
+    --swiper-pagination-bullet-size: 10px;
+    --swiper-pagination-bullet-width: 10px;
+    --swiper-pagination-bullet-height: 10px;
+    --swiper-pagination-bullet-border-radius: none;
+    --swiper-pagination-bullet-inactive-color: #dad6ce;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 5px;
+    --swiper-pagination-bullet-vertical-gap: 6px;
+  }
+
+  .custom-pagination-judges .swiper-pagination-bullet-active {
+    width: 50px;
+  }
+
+  .custom-pagination-home {
+    --swiper-pagination-color: #1f1e23;
+    --swiper-pagination-fraction-color: inherit;
+    --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+    --swiper-pagination-progressbar-size: 4px;
+    --swiper-pagination-bullet-size: 20px;
+    --swiper-pagination-bullet-width: 10px;
+    --swiper-pagination-bullet-height: 10px;
+    --swiper-pagination-bullet-border-radius: none;
+    --swiper-pagination-bullet-inactive-color: #dad6ce;
+    --swiper-pagination-bullet-inactive-opacity: 0, 2;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 5px;
+    --swiper-pagination-bullet-vertical-gap: 6px;
+  }
+
+  .custom-pagination-home .swiper-pagination-bullet-active {
+    width: 50px;
+  }
+
+  .custom-pagination {
+    --swiper-pagination-color: white;
+    --swiper-pagination-fraction-color: inherit;
+    --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+    --swiper-pagination-progressbar-size: 4px;
+    --swiper-pagination-bullet-size: 20px;
+    --swiper-pagination-bullet-width: 10px;
+    --swiper-pagination-bullet-height: 10px;
+    --swiper-pagination-bullet-border-radius: none;
+    --swiper-pagination-bullet-inactive-color: rgb(255, 255, 255);
+    --swiper-pagination-bullet-inactive-opacity: 0.2;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 5px;
+    --swiper-pagination-bullet-vertical-gap: 6px;
+  }
+
+  .custom-pagination .swiper-pagination-bullet-active {
+    width: 50px;
+  }
+  .custom-pagination-commitee {
+    --swiper-pagination-color: white;
+    --swiper-pagination-fraction-color: inherit;
+    --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+    --swiper-pagination-progressbar-size: 4px;
+    --swiper-pagination-bullet-size: 20px;
+    --swiper-pagination-bullet-width: 10px;
+    --swiper-pagination-bullet-height: 10px;
+    --swiper-pagination-bullet-border-radius: none;
+    --swiper-pagination-bullet-inactive-color: rgb(255, 255, 255);
+    --swiper-pagination-bullet-inactive-opacity: 0.2;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 5px;
+    --swiper-pagination-bullet-vertical-gap: 6px;
+  }
+
+  .custom-pagination-commitee .swiper-pagination-bullet-active {
+    width: 50px;
+  }
+}
+
+a[href="https://caturnawa.unasfest.com/"]
+{
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+a[href="https://caturnawa.unasfest.com/"]:hover,a[href="https://caturnawa.unasfest.com/"]:focus
+{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 580px) {
+  .text-color {
+    color: white; /* Warna teks untuk tampilan mobile dengan lebar layar 580px */
+  }
+  .text-color-one {
+    color: white; /* Warna teks untuk tampilan mobile dengan lebar layar 580px */
+  }
+}
+
+@media screen and (min-width: 581px) and (max-width: 600px) {
+  .text-color {
+    color: white; /* Warna teks untuk tampilan mobile dengan lebar layar 581px hingga 600px */
+  }
+  .text-color-one {
+    color: white; /* Warna teks untuk tampilan mobile dengan lebar layar 581px hingga 600px */
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 760px) {
+  .text-color {
+    color: blue; /* Warna teks untuk tampilan mobile dengan lebar layar 601px hingga 760px */
+  }
+  .text-color-one {
+    color: blue; /* Warna teks untuk tampilan mobile dengan lebar layar 601px hingga 760px */
+  }
+}
+
+@media screen and (min-width: 761px) and (max-width: 768px) {
+  .text-color {
+    color: #fffaf0; /* Warna teks untuk tampilan mobile dengan lebar layar 761px hingga 768px */
+  }
+  .text-color-one {
+    color: #fffaf0; /* Warna teks untuk tampilan mobile dengan lebar layar 761px hingga 768px */
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .text-color {
+    color: #004aad; /* Warna teks untuk tampilan desktop */
+  }
+  .text-color-one {
+    color: #fffaf0; /* Warna teks untuk tampilan desktop */
+  }
+}

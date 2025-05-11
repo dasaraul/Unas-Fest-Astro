@@ -1,0 +1,11 @@
+---
+import JudgesReact from './react/Judges.jsx';
+
+interface Props {
+  judgesData: any[];
+}
+
+const { judgesData } = Astro.props;
+---
+
+<JudgesReact client:load judgesData={judgesData} />

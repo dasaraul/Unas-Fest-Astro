@@ -1,153 +1,133 @@
 ---
-import { navMenu } from '../data/navMenu';
-import Logo from '../assets/icons/unasfest-logo.png';
+import { navMenu } from '../data/navMenu.js';
+import { Image } from 'astro:assets';
+import unasfestLogo from '../assets/icons/unasfest-logo.png';
 ---
 
-<header class="sticky top-0 z-[99] flex h-full w-full bg-[#FFFAF0] duration-200">
-  <div class="border-[rgba(0, 0, 0, 0.10)] h-[80px] w-full border-b-2 border-solid">
+<header class="sticky z-[99] flex h-full w-full bg-[#FFFAF0] duration-200 top-0">
+  <!-- Logo -->
+  <div class="border-[rgba(0, 0, 0, 0.10)] h-[80px] w-full border-b-2 border-solid duration-200">
     <div class="container z-50 flex h-full w-full items-center justify-between">
       <a href="/" class="flex cursor-pointer items-center">
-        <img
-          src={Logo.src}
-          alt="unasfest logo"
-          width="190"
-          height="56"
+        <Image 
+          src={unasfestLogo} 
+          alt="unasfest logo" 
+          width={190} 
+          height={56} 
           class="h-[40px] w-[120px] object-contain md:h-[56px] md:w-[190px]"
         />
       </a>
       
-      <nav class="hidden md:block">
-        <ul class="flex items-center gap-10">
-          {navMenu.map((item) => (
-            <li>
-              {!item.child ? (
-                <a href={item.path} class="nav relative cursor-pointer font-medium text-black opacity-60 hover:text-active-blue hover:opacity-100">
-                  {item.title}
-                </a>
-              ) : (
-                <div class="relative group">
-                  <button class="nav relative cursor-pointer font-medium text-black opacity-60 hover:text-active-blue hover:opacity-100 flex items-center">
-                    {item.title}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 h-3 w-3 transition duration-200 group-hover:rotate-180">
-                      <path d="m6 9 6 6 6-6"/>
-                    </svg>
-                  </button>
-                  <div class="absolute left-0 top-full hidden w-[300px] bg-white shadow-lg group-hover:block z-50">
-                    <ul class="py-2">
-                      {item.child?.map((childItem) => (
-                        <li>
-                          <a href={childItem.href} class="block p-3 hover:bg-accent hover:bg-opacity-10">
-                            {childItem.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </nav>
-      
-      <!-- Mobile menu button -->
-      <button id="menu-button" class="md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="4" x2="20" y1="12" y2="12"/>
-          <line x1="4" x2="20" y1="6" y2="6"/>
-          <line x1="4" x2="20" y1="18" y2="18"/>
-        </svg>
-      </button>
-      
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="fixed inset-0 z-[100] hidden bg-white">
-        <div class="container flex h-full flex-col">
-          <div class="flex items-center justify-between py-4">
-            <a href="/" class="flex cursor-pointer items-center">
-              <img 
-                src={Logo.src} 
-                alt="unasfest logo" 
-                width="190" 
-                height="56" 
-                class="h-[40px] w-[120px] object-contain md:h-[56px] md:w-[190px]"
-              />
-            </a>
-            <button id="close-menu">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 6 6 18"/>
-                <path d="m6 6 12 12"/>
-              </svg>
-            </button>
-          </div>
-          <ul class="flex flex-col gap-8 py-10">
-            {navMenu.map((item) => (
-              <li>
-                {!item.child ? (
-                  <a href={item.path} class="text-2xl font-medium">
-                    {item.title}
-                  </a>
-                ) : (
-                  <div class="relative">
-                    <div class="flex items-center justify-between">
-                      <span class="text-2xl font-medium">{item.title}</span>
-                      <button class="mobile-dropdown-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="m6 9 6 6 6-6"/>
-                        </svg>
-                      </button>
-                    </div>
-                    <ul class="mobile-dropdown-content hidden pl-4 pt-4">
-                      {item.child?.map((childItem) => (
-                        <li class="py-2">
-                          <a href={childItem.href} class="text-xl">
-                            {childItem.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
+      <!-- Mobile Nav Toggle (visible on mobile only) -->
+      <div class="md:hidden" id="mobile-menu-toggle">
+        <div id="mobile-menu-icon" class="duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+            <line x1="4" x2="20" y1="12" y2="12"/>
+            <line x1="4" x2="20" y1="6" y2="6"/>
+            <line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
         </div>
       </div>
+      
+      <!-- Navigation Menu (Desktop and Mobile) -->
+      <nav class="absolute left-0 -z-50 w-full max-w-none justify-center bg-[#FFFAF0] py-6 duration-200 md:relative md:top-0 md:z-0 md:justify-end -top-96" id="main-nav">
+        <ul class="flex flex-col gap-5 text-xl md:flex-row md:text-4xl lg:gap-10 lg:text-xl">
+          {navMenu.map(({ title, path, child }) => {
+            if (child) {
+              return (
+                <li class="dropdown-wrapper nav relative">
+                  <button class="dropdown-trigger flex items-center justify-between">
+                    {title}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative top-[1px] ml-1 h-3 w-3 transition duration-200"><path d="m6 9 6 6 6-6"/></svg>
+                  </button>
+                  <div class="dropdown-content hidden absolute mt-2 w-[300px] bg-white shadow-lg p-2 z-50">
+                    <ul>
+                      {child.map((item) => (
+                        <li>
+                          <a href={item.href} class="block w-[300px] select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:bg-opacity-10 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                            <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              {item.name}
+                            </p>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              );
+            }
+            return (
+              <li class={`${Astro.url.pathname === path ? "nav-active" : "nav"}`}>
+                <a href={path} class="navigationMenuTriggerStyle">
+                  {title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
     </div>
   </div>
 </header>
 
 <script>
-  // Mobile menu toggle
-  document.getElementById('menu-button')?.addEventListener('click', () => {
-    document.getElementById('mobile-menu')?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+// Mobile menu toggle functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mainNav = document.getElementById('main-nav');
+  const menuIcon = document.querySelector('.menu-icon');
+  const closeIcon = document.querySelector('.close-icon');
+  
+  mobileMenuToggle?.addEventListener('click', () => {
+    // Toggle menu visibility
+    if (mainNav?.classList.contains('-top-96')) {
+      mainNav.classList.remove('-top-96');
+      mainNav.classList.add('top-20');
+      menuIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+    } else {
+      mainNav?.classList.remove('top-20');
+      mainNav?.classList.add('-top-96');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
   });
   
-  document.getElementById('close-menu')?.addEventListener('click', () => {
-    document.getElementById('mobile-menu')?.classList.add('hidden');
-    document.body.style.overflow = '';
-  });
+  // Dropdown functionality
+  const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
   
-  // Mobile dropdowns
-  document.querySelectorAll('.mobile-dropdown-button').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      const content = e.currentTarget.parentElement?.nextElementSibling;
+  dropdownTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const content = trigger.nextElementSibling;
+      
+      // Close all other dropdowns
+      document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+        if (dropdown !== content) {
+          dropdown.classList.add('hidden');
+        }
+      });
+      
+      // Toggle current dropdown
       content?.classList.toggle('hidden');
     });
   });
+  
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+      dropdown.classList.add('hidden');
+    });
+  });
+});
 </script>
 
 <style>
-  .nav::after {
-    @apply absolute -bottom-2 left-0 h-1 w-[0%] rounded-sm bg-active-blue duration-300 content-[''];
-  }
-
-  .nav:hover::after {
-    @apply w-[90%];
-  }
-  
-  /* Untuk halaman aktif */
-  .nav-active::after {
-    @apply absolute -bottom-2 left-0 h-1 w-[90%] rounded-sm bg-active-blue duration-100 content-[''];
-  }
+.navigationMenuTriggerStyle {
+  @apply inline-flex w-max items-center justify-center rounded-md text-xl font-medium transition-colors hover:text-active-blue focus:outline-none disabled:pointer-events-none disabled:opacity-50;
+}
 </style>

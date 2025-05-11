@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+
+// Interface untuk props
+interface Props {
+  props: {
+    icon: any;  // Path ke icon
+    text: string;
+  };
+}
+
+const { props } = Astro.props as Props;
+
+// Menduplikasi slides untuk efek infinite
+const slides = Array(3).fill(props);
+const duplicatedSlides = [...slides, ...slides];
+---
+
+<div
+  style="will-change: transform; margin-top: 80px;"
+  class="flex h-14 w-full -rotate-2 items-center overflow-x-hidden bg-black md:h-24"
+>
+  <!-- Wrapper div untuk animasi sliding -->
+  <div class="slider-wrapper flex h-full" style="transform: translateZ(0)">
+    {
+      duplicatedSlides.map((item, index) => (
+        <div
+          key={index}
+          class="h-full flex-shrink-0"
+          style={`width: ${100 / slides.length}%`}
+        >
+          <div class="flex h-full flex-col items-center justify-center bg-black">
+            <div class="flex h-full items-center gap-4 font-bungee">
+              <Image
+                src={item.icon}
+                alt="icons"
+                width={44}
+                height={29}
+                class="object-contain"
+              />
+              <span class="whitespace-nowrap font-bungee text-[20px] font-medium text-page-white md:text-[24px]">
+                {item.text}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  @keyframes slideAnimation {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  .slider-wrapper {
+    animation: slideAnimation 8s linear infinite;
+  }
+</style>

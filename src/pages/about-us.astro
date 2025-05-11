@@ -1,0 +1,244 @@
+---
+import { Image } from 'astro:assets';
+import MainLayout from '../layouts/MainLayout.astro';
+import AboutUsBanner from '../components/AboutUsBanner.astro';
+import Button from '../components/ui/Button.astro';
+import InfiniteSlidingComponent from '../components/InfiniteSlidingComponent.astro';
+import Slider from '../components/Slider.astro';
+import UnasfestLogo from '../assets/icons/unasfest-icon-logo.png';
+import Star from '../assets/icons/star-icon.svg';
+import Unasfest2023Macsot from '../assets/images/mascots/unasfest2023mascot.png';
+import Gallery from '../components/Gallery.astro';
+import SteeringCommitteeSlider from '../components/SteeringCommitteeSlider.astro';
+import Committe from '../components/Committe.astro';
+import Visionaries from '../components/Visionaries.astro';
+import YearBook from '../components/YearBook.astro';
+
+import { logoDetails, mascots, missions, unasCollaborate, mediaPartnership } from '../data/about.js';
+
+const InfiniteSlidingProps = {
+  icon: Star.src,
+  text: "UNAS FEST 2024",
+};
+---
+
+<MainLayout title="About Us | UNAS FEST 2024">
+  <main>
+    <!-- Hero Section -->
+    <div class="container">
+      <h1 class="mt-20 text-center font-bungee text-4xl font-medium uppercase lg:text-[53px] lg:leading-[70px]">
+        voices and minds knit competitive rhythms at unas fest 2024
+      </h1>
+      <p class="mx-auto mt-4 text-center text-lg lg:w-3/5 lg:text-xl">
+        "Exploring the Potential of Renewable Energy Technology Innovation to
+        Achieve Global Green Momentum"
+      </p>
+    </div>
+    
+    <!-- Vision and Mission -->
+    <div class="mx-auto mt-20 w-full bg-page-black pb-10 text-page-white">
+      <AboutUsBanner />
+      <div class="mx-auto mt-16">
+        <div class="container">
+          <p class="text-xl font-medium">
+            This activity is an open competition for the public at the student
+            level. The purpose of UNAS FEST 2024 is to develop critical
+            thinking of Indonesian students in responding to marine problems
+            in Indonesia, increasing pride and love for the country, and
+            strengthening the spirit of scientific and competitive spirit to
+            Indonesian students. There are 4 branches of competition in this
+            activity, namely Scientific Writing Competition (SPC), English
+            Debate Competition (EDC), Kompetisi Debat Bahasa Indonesia (KDBI)
+            and short movie competiton.
+          </p>
+          <a href="/#activity-slider-section">
+            <Button
+              variant="secondary"
+              size="lg"
+              class="mt-6 rounded-none px-10 py-6 text-xl font-semibold"
+            >
+              See Our Competition
+            </Button>
+          </a>
+        </div>
+      </div>
+      
+      <!-- InfiniteSlidingText -->
+      <div class="z-10 mt-20 h-24 w-full overflow-hidden pt-6 text-black md:overflow-visible">
+        <InfiniteSlidingComponent props={InfiniteSlidingProps} />
+      </div>
+      
+      <div class="container mt-32">
+        <h1 class="text-center font-bungee text-5xl font-semibold uppercase">
+          our vision
+        </h1>
+        <p class="mt-8 text-center text-base font-semibold md:text-3xl">
+          <i>
+            &quot;Being a forum for coaching and training as well as a
+            benchmark (barometer) in terms of improving the quality of
+            students in committee and organizational activities at the
+            Universitas Nasional.&quot;
+          </i>
+        </p>
+        <h1 class="mt-14 text-center font-bungee text-5xl font-semibold uppercase">
+          our missions
+        </h1>
+      </div>
+      
+      <!-- Missions Slider -->
+      <div class="container mt-10 w-full pb-16 pr-0">
+        <Slider props={missions} />
+      </div>
+    </div>
+
+    <!-- MAIN COMMITE -->
+    <div class="container mt-20 px-0">
+      <Committe />
+    </div>
+
+    <!-- YEARBOOK -->
+    <div class="container mt-20 px-0">
+      <YearBook />
+    </div>
+    
+    <!-- Logo and Mascot Section -->
+    <div class="container text-page-black">
+      <div class="mt-20 text-center">
+        <h1 class="py-2 font-bungee text-5xl font-medium uppercase">
+          our logo
+        </h1>
+        <p class="text-xl capitalize">our logo definition</p>
+      </div>
+      
+      <!-- Logo -->
+      <div class="mt-20 flex flex-col items-center gap-x-10 md:flex-row">
+        <Image
+          src={UnasfestLogo}
+          alt="unasfest logo"
+          width={380}
+          height={380}
+        />
+        <div class="flex flex-col">
+          <h1 class="mt-10 font-bungee text-2xl font-medium md:mt-0">
+            sawo manila fruit and leaves
+          </h1>
+          <p class="mt-6 text-xl font-medium">
+            Sawo Manila fruit and leaves represent the location of UNAS FEST.
+            Sawo manila is also a tree of 1000 benefits, where every part of
+            the tree can be utilized. This illustrates that the UNAS FEST
+            committee consists of students from all study programs at the
+            Universitas Nasional. The placement of 3 leaves and 1 sawo manila
+            fruit forms a star formation in the center, depicting high hopes
+            and shine.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Logo Details -->
+      <div class="container mt-20">
+        <h1 class="text-center font-bungee text-2xl font-medium">
+          logo details
+        </h1>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-0">
+          {logoDetails.map((item) => (
+            <div
+              class="flex h-[290px] w-[290px] flex-col items-start justify-start gap-y-0 border border-page-black p-10 text-xl"
+            >
+              <div class="flex h-full items-center justify-center gap-x-4 font-semibold capitalize">
+                <Image
+                  src={item.icon}
+                  alt={item.name}
+                  width={52}
+                  height={52}
+                />
+                <span>{item.name}</span>
+              </div>
+              <div class="flex h-full justify-start">
+                <p>{item.details}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Mascots -->
+      <div class="mt-20 max-w-screen-xl md:px-10">
+        <div class="text-center">
+          <h1 class="font-bungee text-5xl font-medium uppercase">
+            our mascots
+          </h1>
+          <p class="text-xl capitalize">our mascots definition</p>
+        </div>
+        
+        <!-- List of mascots -->
+        <div class="mt-10 flex flex-col gap-y-10">
+          {mascots.map((item) => (
+            <div
+              class="flex flex-1 flex-col items-center justify-between gap-x-10 md:flex-row"
+            >
+              <Image
+                src={item.img}
+                alt={item.name}
+                width={380}
+                height={400}
+                class="object-contain"
+              />
+              <div class="flex flex-col gap-y-6 text-center lg:text-left">
+                <h1 class="text-5xl font-bold uppercase">{item.name}</h1>
+                <p class="text-left text-xl">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="container mt-20 text-center">
+        <h1 class="font-bungee text-3xl md:text-5xl font-medium uppercase">
+          past mascots
+        </h1>
+        <p class="text-xl capitalize">our previous mascots</p>
+      </div>
+      
+      <!-- Unasfest 2023 mascot -->
+      <div class="relative mx-auto mt-16 flex min-h-[460px] max-w-[1560px] flex-col items-center gap-x-10 bg-water-pool bg-cover bg-center px-32 py-10 lg:flex-row">
+        <div class="flex-[1]">
+          <Image
+            src={Unasfest2023Macsot}
+            alt="unasfest 2023 mascot"
+            width={520}
+            class="bottom-10 left-0 aspect-square object-contain lg:absolute"
+          />
+        </div>
+        <div class="flex flex-[2] flex-col items-center justify-center gap-y-10 text-center">
+          <h1 class="font-bungee text-3xl md:text-5xl font-medium">
+            unas fest 2023 mascot philosophy
+          </h1>
+          <p class="text-left text-xl md:text-center">
+            The orca whale, a top marine predator with a unique black and white
+            body, reflects the spirit of Universitas Nasional students at UNAS
+            FEST 2023, the biggest event on campus. Like orca whales that live
+            in complex social groups and communicate through various sounds, the
+            organizers of UNAS FEST 2023 showcase the diversity of their
+            mindsets and perspectives. The intelligence and strategy of orca
+            whales inspired the structured, integrated, creative, and innovative
+            design of UNAS FEST 2023.
+          </p>
+        </div>
+      </div>
+
+      <!-- VISIONARIES -->
+      <div class="container mt-20 text-center">
+        <h1 class="font-bungee text-3xl md:text-5xl font-medium uppercase">
+          meet our visionaries
+        </h1>
+        <p class="text-xl capitalize">Our participants, driven by innovation, craft remarkable works</p>
+        <Visionaries />
+      </div>
+
+      <!-- Gallery Component -->
+      <div class="mx-auto mt-20 max-w-[1400px] px-3 md:container">
+        <Gallery />
+      </div>
+    </div>
+  </main>
+</MainLayout>
