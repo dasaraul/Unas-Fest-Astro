@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import projectManagerImg from '../assets/images/about-us/committee/shafa.webp';
+import linkedinIcon from '../assets/icons/LinkedIn-icon-white.svg';
+import instagramIcon from '../assets/icons/instagram-icon-white.svg';
+import SliderCommitteeReact from './react/SliderCommittee.jsx';
+import { allCommittees } from '../data/committee.js';
+---
+
+<div class="container mx-auto px-6 md:px-0 mt-10 mb-20">
+  <h2 class="text-4xl md:text-5xl font-bold text-center">Our Committee</h2>
+  
+  <!-- Project Manager Section -->
+  <div class="flex flex-col items-center mt-10">
+    <h3 class="text-2xl font-semibold mb-5">Project Manager</h3>
+    <div class="relative group">
+      <div class="relative overflow-hidden rounded-full w-40 h-40">
+        <Image
+          src={projectManagerImg}
+          alt="Project Manager"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </div>
+      <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100">
+        <div class="flex gap-3">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6" />
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <Image src={instagramIcon} alt="Instagram" class="w-6 h-6" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <h4 class="text-xl font-medium mt-3">Shafa Salsabila</h4>
+    <p class="text-gray-600">Project Manager</p>
+  </div>
+  
+  <!-- Other Committee Members -->
+  <div class="mt-16">
+    <SliderCommitteeReact client:load committees={allCommittees} />
+  </div>
+</div>

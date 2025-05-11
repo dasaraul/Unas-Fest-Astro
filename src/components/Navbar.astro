@@ -6,128 +6,277 @@ import unasfestLogo from '../assets/icons/unasfest-logo.png';
 
 <header class="sticky z-[99] flex h-full w-full bg-[#FFFAF0] duration-200 top-0">
   <!-- Logo -->
-  <div class="border-[rgba(0, 0, 0, 0.10)] h-[80px] w-full border-b-2 border-solid duration-200">
-    <div class="container z-50 flex h-full w-full items-center justify-between">
-      <a href="/" class="flex cursor-pointer items-center">
-        <Image 
-          src={unasfestLogo} 
-          alt="unasfest logo" 
-          width={190} 
-          height={56} 
-          class="h-[40px] w-[120px] object-contain md:h-[56px] md:w-[190px]"
+  <div class="container mx-auto flex h-[75px] items-center justify-between px-4 md:px-6">
+    <a href="/" class="flex h-full items-center">
+      <Image
+        src={unasfestLogo}
+        alt="UNAS FEST Logo"
+        width={150}
+        height={50}
+        class="w-auto h-10 md:h-12"
+      />
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex">
+      <ul class="flex items-center gap-6">
+        {navMenu.map((menu) => (
+          <li>
+            {!menu.child ? (
+              <a
+                href={menu.path}
+                class="relative text-black hover:text-primary transition-colors duration-200 font-medium"
+              >
+                {menu.title}
+              </a>
+            ) : (
+              <div class="relative group">
+                <button class="flex items-center gap-1 text-black hover:text-primary transition-colors duration-200 font-medium">
+                  {menu.title}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transition-transform duration-200 group-hover:rotate-180"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="absolute left-0 top-full z-10 mt-2 hidden w-64 rounded-md bg-white p-2 shadow-md group-hover:block">
+                  <ul class="flex flex-col gap-1">
+                    {menu.child.map((submenu) => (
+                      <li>
+                        <a
+                          href={submenu.href}
+                          class="block rounded px-3 py-2 text-black hover:bg-gray-100 transition-colors duration-200"
+                        >
+                          {submenu.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="flex h-10 w-10 items-center justify-center rounded-md border md:hidden"
+      id="menu-toggle"
+      aria-label="Toggle Menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-y-0 right-0 z-50 hidden w-full max-w-xs transform bg-white p-6 shadow-xl transition-transform duration-300 ease-in-out"
+  >
+    <div class="flex items-center justify-between">
+      <a href="/" class="flex items-center">
+        <Image
+          src={unasfestLogo}
+          alt="UNAS FEST Logo"
+          width={150}
+          height={50}
+          class="h-10 w-auto"
         />
       </a>
-      
-      <!-- Mobile Nav Toggle (visible on mobile only) -->
-      <div class="md:hidden" id="mobile-menu-toggle">
-        <div id="mobile-menu-icon" class="duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
-            <line x1="4" x2="20" y1="12" y2="12"/>
-            <line x1="4" x2="20" y1="6" y2="6"/>
-            <line x1="4" x2="20" y1="18" y2="18"/>
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden">
-            <path d="M18 6 6 18"/>
-            <path d="m6 6 12 12"/>
-          </svg>
-        </div>
-      </div>
-      
-      <!-- Navigation Menu (Desktop and Mobile) -->
-      <nav class="absolute left-0 -z-50 w-full max-w-none justify-center bg-[#FFFAF0] py-6 duration-200 md:relative md:top-0 md:z-0 md:justify-end -top-96" id="main-nav">
-        <ul class="flex flex-col gap-5 text-xl md:flex-row md:text-4xl lg:gap-10 lg:text-xl">
-          {navMenu.map(({ title, path, child }) => {
-            if (child) {
-              return (
-                <li class="dropdown-wrapper nav relative">
-                  <button class="dropdown-trigger flex items-center justify-between">
-                    {title}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative top-[1px] ml-1 h-3 w-3 transition duration-200"><path d="m6 9 6 6 6-6"/></svg>
-                  </button>
-                  <div class="dropdown-content hidden absolute mt-2 w-[300px] bg-white shadow-lg p-2 z-50">
-                    <ul>
-                      {child.map((item) => (
-                        <li>
-                          <a href={item.href} class="block w-[300px] select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:bg-opacity-10 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                            <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {item.name}
-                            </p>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              );
-            }
-            return (
-              <li class={`${Astro.url.pathname === path ? "nav-active" : "nav"}`}>
-                <a href={path} class="navigationMenuTriggerStyle">
-                  {title}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <button
+        id="close-menu"
+        class="h-10 w-10 rounded-md border"
+        aria-label="Close Menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="mx-auto"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
+    <nav class="mt-8">
+      <ul class="flex flex-col gap-4">
+        {navMenu.map((menu) => (
+          <li>
+            {!menu.child ? (
+              <a
+                href={menu.path}
+                class="block py-2 text-lg font-medium text-black hover:text-primary transition-colors duration-200"
+              >
+                {menu.title}
+              </a>
+            ) : (
+              <div class="block">
+                <button
+                  class="flex w-full items-center justify-between py-2 text-lg font-medium text-black hover:text-primary transition-colors duration-200 mobile-submenu-toggle"
+                >
+                  {menu.title}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transition-transform duration-200"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="mt-1 hidden pl-4 mobile-submenu">
+                  <ul class="flex flex-col gap-2">
+                    {menu.child.map((submenu) => (
+                      <li>
+                        <a
+                          href={submenu.href}
+                          class="block py-2 text-gray-700 hover:text-primary transition-colors duration-200"
+                        >
+                          {submenu.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
   </div>
 </header>
 
 <script>
-// Mobile menu toggle functionality
-document.addEventListener('DOMContentLoaded', () => {
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const mainNav = document.getElementById('main-nav');
-  const menuIcon = document.querySelector('.menu-icon');
-  const closeIcon = document.querySelector('.close-icon');
-  
-  mobileMenuToggle?.addEventListener('click', () => {
-    // Toggle menu visibility
-    if (mainNav?.classList.contains('-top-96')) {
-      mainNav.classList.remove('-top-96');
-      mainNav.classList.add('top-20');
-      menuIcon?.classList.add('hidden');
-      closeIcon?.classList.remove('hidden');
-    } else {
-      mainNav?.classList.remove('top-20');
-      mainNav?.classList.add('-top-96');
-      menuIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-    }
-  });
-  
-  // Dropdown functionality
-  const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
-  
-  dropdownTriggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const content = trigger.nextElementSibling;
-      
-      // Close all other dropdowns
-      document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-        if (dropdown !== content) {
-          dropdown.classList.add('hidden');
-        }
-      });
-      
-      // Toggle current dropdown
-      content?.classList.toggle('hidden');
-    });
-  });
-  
-  // Close dropdowns when clicking outside
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-      dropdown.classList.add('hidden');
-    });
-  });
-});
-</script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const closeMenu = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-<style>
-.navigationMenuTriggerStyle {
-  @apply inline-flex w-max items-center justify-center rounded-md text-xl font-medium transition-colors hover:text-active-blue focus:outline-none disabled:pointer-events-none disabled:opacity-50;
-}
-</style>
+  if (menuToggle && closeMenu && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('translate-x-0');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('translate-x-0');
+    });
+  }
+
+  // Mobile submenu toggles
+  const submenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
+  
+  submenuToggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const submenu = toggle.nextElementSibling;
+      const icon = toggle.querySelector('svg');
+      
+      if (submenu && icon) {
+        submenu.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+      }
+    });
+  });
+
+  // Highlight active menu item
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    
+    const navMenu = [
+      { path: "/", title: "Home" },
+      { 
+        path: "/activities", 
+        title: "Activities",
+        child: [
+          { name: "Kompetisi Debat Bahasa Indonesia", href: "/activities/kdbi" },
+          { name: "English Debate Competition", href: "/activities/edc" },
+          { name: "Scientific Paper Competition", href: "/activities/scp" },
+          { name: "Student Movie Competition", href: "/activities/smc" }
+        ] 
+      },
+      { path: "/about-us", title: "About Us" },
+      { path: "/sponsors", title: "Sponsors" },
+      { path: "/contact", title: "Contact" }
+    ];
+    
+    navMenu.forEach((menu) => {
+      const menuLinks = document.querySelectorAll(`a[href="${menu.path}"]`);
+      
+      if (currentPath === menu.path) {
+        menuLinks.forEach((link) => {
+          link.classList.add('text-primary');
+          link.classList.add('font-semibold');
+        });
+      }
+      
+      if (menu.child) {
+        menu.child.forEach((submenu) => {
+          const submenuLinks = document.querySelectorAll(`a[href="${submenu.href}"]`);
+          
+          if (currentPath === submenu.href) {
+            submenuLinks.forEach((link) => {
+              link.classList.add('text-primary');
+              link.classList.add('font-semibold');
+            });
+            
+            const parentButtons = document.querySelectorAll(`.mobile-submenu-toggle`);
+            parentButtons.forEach((button) => {
+              if (button.textContent.includes(menu.title)) {
+                button.classList.add('text-primary');
+                button.classList.add('font-semibold');
+                
+                const submenu = button.nextElementSibling;
+                const icon = button.querySelector('svg');
+                
+                if (submenu && icon) {
+                  submenu.classList.remove('hidden');
+                  icon.classList.add('rotate-180');
+                }
+              }
+            });
+          }
+        });
+      }
+    });
+  });
+</script>

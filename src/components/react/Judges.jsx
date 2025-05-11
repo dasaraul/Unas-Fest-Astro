@@ -234,5 +234,3 @@ const Judges = ({ judgesData }) => {
     </div>
   );
 };
-
-export default Judges;

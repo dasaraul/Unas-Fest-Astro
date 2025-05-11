@@ -8,87 +8,65 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const RequirementCard = ({ index, detail }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const toggleDialog = () => {
-    setIsOpen(!isOpen);
-  };
-  
+function Slider({ requirements }) {
   return (
-    <>
-      <div 
-        className="relative flex h-[279px] w-[285px] flex-shrink-0 flex-col justify-start gap-y-1 rounded-none bg-page-white py-5 text-page-black active:cursor-grabbing md:w-[380px] md:gap-y-6 cursor-pointer"
-        onClick={toggleDialog}
-      >
-        <div className="flex flex-col gap-y-4 text-left p-6">
-          <h1 className="font-bungee text-5xl font-semibold">
-            0{index}
-          </h1>
-        </div>
-        <div className="p-6 pt-0">
-          <p className="line-clamp-4 text-start text-xl font-medium">
-            {detail}
-          </p>
-        </div>
+    <div className="container mx-auto py-16">
+      <div className="mb-12 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">{requirements.title}</h2>
+        {requirements.description && (
+          <p className="text-gray-600 max-w-3xl mx-auto">{requirements.description}</p>
+        )}
       </div>
       
-      {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white p-6 rounded-lg max-w-xl w-full">
-            <p className="text-start text-base font-medium mb-4">
-              {detail}
-            </p>
-            <button 
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-              onClick={toggleDialog}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
-
-const Slider = ({ requirements }) => {
-  return (
-    <div className="relative">
       <Swiper
-        slidesPerView={"auto"}
-        spaceBetween={20}
-        pagination={{
-          clickable: true,
-          el: ".custom-pagination",
-        }}
-        navigation={{
-          nextEl: ".swiper-button-next",
-        }}
         modules={[Pagination, Navigation]}
-        className="overflow-hidden"
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation={true}
+        pagination={{ clickable: true }}
+        className="requirements-slider"
       >
-        {requirements.map((requirement) => (
-          <SwiperSlide
-            key={requirement.index}
-            className="max-w-[285px] md:max-w-[380px]"
-          >
-            <RequirementCard 
-              index={requirement.index} 
-              detail={requirement.detail}
-            />
+        {requirements.items.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-md h-full flex flex-col">
+              <div className="mb-4">
+                {item.icon && (
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                    <img src={item.icon.src} alt={item.title} className="w-6 h-6" />
+                  </div>
+                )}
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+              
+              {item.list && (
+                <ul className="mt-4 space-y-2 flex-grow">
+                  {item.list.map((listItem, listIndex) => (
+                    <li key={listIndex} className="flex items-start">
+                      <span className="mr-2 text-green-500">✓</span>
+                      <span>{listItem}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              
+              {item.link && (
+                <div className="mt-6">
+                  <a 
+                    href={item.link} 
+                    className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+                  >
+                    {item.linkText || "Learn More"} 
+                    <MoveRight className="ml-2 h-4 w-4" />
+                  </a>
+                </div>
+              )}
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* Custom Pagination and Navigation Container */}
-      <div className="absolute -bottom-14 left-0 z-10 flex h-14 items-center space-x-4">
-        <div className="custom-pagination" />
-        <div className="swiper-button-next cursor-pointer bg-transparent p-2">
-          <MoveRight />
-        </div>
-      </div>
     </div>
   );
-};
+}
 
 export default Slider;

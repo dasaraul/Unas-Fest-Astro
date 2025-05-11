@@ -1,32 +1,36 @@
 // Import poster images
-import english from '../assets/images/home/posters/english2.png';
-import indo from '../assets/images/home/posters/indo2.png';
-import movie from '../assets/images/home/posters/movie2.png';
-import SCP from '../assets/images/home/posters/SCP2.png';
+import english from 'src/assets/images/home/posters/english2.png';
+import indo from 'src/assets/images/home/posters/indo2.png';
+import movie from 'src/assets/images/home/posters/movie2.png';
+import SCP from 'src/assets/images/home/posters/SCP2.png';
 
 export const postersData = [
   {
-    index: 1,
-    image: indo,
-    name: "Indonesia Poster",
-    path: "/activities/kdbi",
-  },
-  {
-    index: 2,
+    id: 1,
+    title: "English Debate Competition",
+    description: "Kompetisi debat bahasa Inggris dengan format British Parliamentary Style.",
     image: english,
-    name: "English Poster",
-    path: "/activities/edc",
+    link: "/activities/edc",
   },
   {
-    index: 3,
-    image: movie,
-    name: "Movie Poster",
-    path: "/activities/smc",
+    id: 2,
+    title: "Kompetisi Debat Bahasa Indonesia",
+    description: "Kompetisi debat dengan format Asian Parliamentary Style dalam Bahasa Indonesia.",
+    image: indo,
+    link: "/activities/kdbi",
   },
   {
-    index: 4,
+    id: 3,
+    title: "Scientific Paper Competition",
+    description: "Kompetisi penulisan karya ilmiah dengan tema 'Innovation for Sustainable Development'.",
     image: SCP,
-    name: "SCP Poster",
-    path: "/activities/spc",
+    link: "/activities/scp",
+  },
+  {
+    id: 4,
+    title: "Student Movie Competition",
+    description: "Kompetisi pembuatan film pendek dengan tema 'Local Wisdom in Modern Society'.",
+    image: movie,
+    link: "/activities/smc",
   },
 ];

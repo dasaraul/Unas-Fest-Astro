@@ -4,33 +4,65 @@ import Button from './ui/Button.astro';
 import mascotGroup from '../assets/images/mascots/mascots.png';
 ---
 
-<div class="container mt-8 flex flex-col items-center justify-between gap-y-3 md:flex-row-reverse lg:flex-row">
-  <!-- Right section - Mascot Image -->
-  <div class="flex h-full w-full items-center justify-center md:w-3/5 lg:order-2 lg:w-2/5">
-    <Image
-      src={mascotGroup}
-      alt="mascot group"
-      width={392}
-      height={309}
-      class="h-auto w-full object-contain"
-    />
+<div class="container mt-8 flex flex-col items-center justify-between gap-y-3 md:flex-row-reverse lg:h-[88vh]">
+  <!-- Mascot Images -->
+  <div class="w-full md:w-1/2">
+    <div class="mx-auto max-w-md md:max-w-lg">
+      <Image
+        src={mascotGroup}
+        alt="UNAS FEST Mascots"
+        class="h-auto w-full object-contain"
+      />
+    </div>
   </div>
-  
-  <!-- Left section - Text and Button -->
-  <div class="order-2 flex h-full w-full flex-col items-start md:w-3/5 lg:order-1">
-    <h1 class="w-full whitespace-break-spaces font-bungee text-[39px] font-medium uppercase leading-tight text-page-blue md:text-[53px] lg:w-4/5">
-      Sign Up Now for the competition
+
+  <!-- Hero Content -->
+  <div class="flex w-full flex-col gap-y-4 text-center md:w-1/2 md:text-left">
+    <h1 class="text-4xl font-bold md:text-5xl lg:text-6xl">
+      <span class="text-primary">UNAS FEST</span> 2024
     </h1>
-    <p class="mt-4 w-full text-xl font-semibold md:w-[90%]">
-      The Universitas Nasional Festival 2024 (UNAS FEST 2024) is one of the
-      annual events held to commemorate and celebrate the 75th anniversary
-      of Dies Natalis Universitas Nasional.
+    <h2 class="text-2xl font-semibold md:text-3xl">Creativity Beyond Limits</h2>
+    <p class="mx-auto max-w-lg text-gray-600 md:mx-0 md:max-w-md lg:max-w-lg">
+      UNAS FEST adalah festival dan kompetisi tahunan yang diselenggarakan oleh Universitas Nasional Jakarta. Kami menghadirkan berbagai lomba kreativitas dan akademik untuk mahasiswa dari seluruh Indonesia.
     </p>
-    <Button
-      href="#activity-slider-section"
-      class="mt-4 h-[50px] w-[150px] rounded-none text-xl font-semibold capitalize md:h-[60px] md:w-[200px]"
-    >
-      see more
-    </Button>
+    
+    <div class="mt-2 flex flex-wrap justify-center gap-4 md:justify-start">
+      <Button href="/activities" variant="default">
+        Kompetisi Kami
+      </Button>
+      <Button href="/about-us" variant="outline">
+        Tentang Kami
+      </Button>
+    </div>
+    
+    <!-- Timeline Banner -->
+    <div class="mt-4 rounded-lg bg-[#FFF3E5] p-4 md:max-w-md lg:max-w-lg">
+      <div class="flex flex-col items-center gap-2 md:flex-row md:items-start">
+        <div class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="font-bold">Pendaftaran Dibuka!</h3>
+          <p class="text-sm text-gray-600">
+            Pendaftaran untuk semua kompetisi telah dibuka. Jangan lewatkan kesempatan untuk menjadi bagian dari UNAS FEST 2024!
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import ciciRaysamImg from '../assets/images/about-us/ciciraysam.webp';
+import fadjarImg from '../assets/images/about-us/fadjar.webp';
+---
+
+<div class="container mx-auto px-6 md:px-0 py-16">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl md:text-5xl font-bold">Visionaries</h2>
+    <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+      Our guiding stars who believe in the vision of UNAS FEST and help drive our mission forward
+    </p>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+    <!-- Cici Raysam -->
+    <div class="flex flex-col items-center">
+      <div class="relative w-64 h-64 mb-6 overflow-hidden rounded-full">
+        <Image 
+          src={ciciRaysamImg} 
+          alt="Cici Raysam" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <h3 class="text-2xl font-bold">Ibu Cici Raysam</h3>
+      <p class="text-lg font-medium text-gray-700">Dekan Fakultas Humas & Komunikasi Bisnis</p>
+      <div class="mt-4 max-w-md text-center">
+        <p>
+          "UNAS FEST menghadirkan suasana yang menggabungkan pembelajaran dan kreativitas, membuka pintu bagi keberlanjutan pendidikan dan pertumbuhan mahasiswa."
+        </p>
+      </div>
+    </div>
+    
+    <!-- Fadjar -->
+    <div class="flex flex-col items-center">
+      <div class="relative w-64 h-64 mb-6 overflow-hidden rounded-full">
+        <Image 
+          src={fadjarImg} 
+          alt="Fadjar" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <h3 class="text-2xl font-bold">Bapak Fadjar</h3>
+      <p class="text-lg font-medium text-gray-700">Ketua Program Studi Ilmu Komunikasi</p>
+      <div class="mt-4 max-w-md text-center">
+        <p>
+          "UNAS FEST merupakan wadah eksplorasi dan pengembangan bakat yang membuka kesempatan untuk mahasiswa dalam menghadapi dunia profesional."
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

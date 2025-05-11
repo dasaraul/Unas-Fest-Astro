@@ -6,11 +6,11 @@ import smcCover from '../assets/images/competition/smcCover.jpg';
 import semnasCover from '../assets/images/competition/semnasCover.png';
 
 // Import contact images
-import kdbiContact from '../assets/images/home/contactUs/kdbiContact.png';
-import edcContact from '../assets/images/home/contactUs/edcContact.png';
-import scpContact from '../assets/images/home/contactUs/spcContact.png';
-import smcContact from '../assets/images/home/contactUs/smcContact.png';
-import semnasContact from '../assets/images/home/contactUs/semnasContact.png';
+import kdbiContact from 'src/assets/images/home/contactUs/kdbiContact.png';
+import edcContact from 'src/assets/images/home/contactUs/edcContact.png';
+import scpContact from 'src/assets/images/home/contactUs/spcContact.png';
+import smcContact from 'src/assets/images/home/contactUs/smcContact.png';
+import semnasContact from 'src/assets/images/home/contactUs/semnasContact.png';
 
 // Import sliding icons
 import kdbiSlidingIcon from '../assets/icons/megaphone.png';

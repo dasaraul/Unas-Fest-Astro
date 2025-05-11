@@ -9,7 +9,7 @@ export const navMenu = [
       child: [
         {
           name: "Kompetisi Debat Bahasa Indonesia",
-          href: `/activities/kdbi`,
+          href: "/activities/kdbi",
         },
         {
           name: "English Debate Competition",
@@ -17,28 +17,24 @@ export const navMenu = [
         },
         {
           name: "Scientific Paper Competition",
-          href: "/activities/spc",
+          href: "/activities/scp",
         },
         {
-          name: "Short Movie Competition",
+          name: "Student Movie Competition",
           href: "/activities/smc",
-        },
-        {
-          name: "International Seminar",
-          href: "/activities/international-seminar",
-        },
+        }
       ],
-    },
-    {
-      path: "/gallery",
-      title: "Gallery",
-    },
-    {
-      path: "/partnership",
-      title: "Partnership",
     },
     {
       path: "/about-us",
       title: "About Us",
+    },
+    {
+      path: "/sponsors",
+      title: "Sponsors",
+    },
+    {
+      path: "/contact",
+      title: "Contact",
     },
   ];
