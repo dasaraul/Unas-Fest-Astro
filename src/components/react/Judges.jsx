@@ -8,8 +8,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+// Placeholder image for missing images
+const placeholderImg = '/assets/images/about-us/avatar-placeholder.png';
+
 const JudgeDrawer = ({ judge, isOpen, onClose }) => {
   if (!isOpen) return null;
+
+  // Ensure we have image src or fallback
+  const imageSrc = judge.image?.src || placeholderImg;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-80">
@@ -29,8 +35,9 @@ const JudgeDrawer = ({ judge, isOpen, onClose }) => {
           
           <div className="relative flex flex-wrap justify-center gap-5 md:flex-nowrap">
             <img
-              src={judge.image?.src || ''}
+              src={imageSrc}
               alt={judge.name}
+              onError={(e) => { e.target.src = placeholderImg; }}
               className="h-[250px] w-[200px] object-cover md:ml-12 md:h-[400px] md:w-[300px] lg:h-[500px] lg:w-[400px]"
             />
             <div className="z-10 my-auto text-center sm:text-black md:ml-20 md:space-y-4 md:p-4 md:text-start md:text-white">
@@ -47,26 +54,26 @@ const JudgeDrawer = ({ judge, isOpen, onClose }) => {
           <div className="relative z-50 mx-auto mt-10 sm:w-[90%] sm:pt-10 md:w-[80%] md:pt-20">
             <div className="flex flex-wrap">
               <h1 className="w-full text-center text-2xl font-semibold uppercase md:w-1/2 md:text-start">
-                summary
+                Ringkasan
               </h1>
               <p className="w-full sm:mt-5 md:w-1/2 md:text-lg">
-                {judge.description}
+                {judge.description || "Informasi tidak tersedia"}
               </p>
             </div>
             
             <div className="flex flex-wrap pt-14">
               <h1 className="w-full text-2xl font-semibold uppercase sm:text-center md:w-1/2 md:text-start">
-                Education
+                Pendidikan
               </h1>
               <p className="w-full font-bold sm:mt-5 md:w-1/2 md:text-lg">
-                {judge.lastEducation}
+                {judge.lastEducation || "Informasi tidak tersedia"}
               </p>
             </div>
             
             {judge.achievements && judge.achievements.length > 0 && (
               <div className="flex flex-wrap pt-14">
                 <h1 className="w-full text-2xl font-semibold uppercase sm:text-center md:w-1/2 md:text-start">
-                  honors-award
+                  Penghargaan
                 </h1>
                 <ul className="mt-5 w-full list-inside list-disc md:w-1/2">
                   {judge.achievements.map((achievement, i) => (
@@ -81,7 +88,7 @@ const JudgeDrawer = ({ judge, isOpen, onClose }) => {
             {judge.experience && judge.experience.length > 0 && (
               <div className="flex flex-wrap pt-14">
                 <h1 className="w-full text-2xl font-semibold uppercase sm:text-center md:w-1/2 md:text-start">
-                  Experience
+                  Pengalaman
                 </h1>
                 <div className="w-full sm:mt-5 md:w-1/2">
                   {judge.experience.map((exp, i) => (
@@ -183,48 +190,55 @@ const Judges = ({ judgesData = [] }) => {
         }}
         modules={[Pagination, Navigation]}
         className="overflow-hidden pb-5"
+        key="judges-swiper"
       >
-        {judgesData.map((judge, index) => (
-          <SwiperSlide
-            key={index}
-            className="h-full w-full"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
-            <div className="card">
-              <div className="relative flex flex-col items-center gap-y-4 text-left grayscale hover:filter-none md:filter">
-                <div>
-                  <img
-                    src={judge.image?.src || ''}
-                    alt={judge.name}
-                    className="h-[430px] w-full object-cover md:h-[500px] md:w-[400px] lg:px-4"
-                  />
-                  <div className="pb-6 font-inter lg:px-4">
-                    <h1 className="text-lg font-bold">{judge.name}</h1>
-                    <h2 className="w-full text-base">{judge.lastEducation}</h2>
-                  </div>
-                </div>
-                {hoveredIndex === index && (
-                  <div
-                    className={`absolute top-36 mx-2 w-72 bg-black p-5 text-white md:left-12 md:top-44 md:w-[70%]`}
-                  >
-                    <div className="h-[200px] md:h-[250px]">
-                      <p className="font-semi bold mb-10 line-clamp-9 text-sm md:text-base">
-                        {judge.description}
-                      </p>
+        {judgesData.map((judge, index) => {
+          // Ensure we have image src or fallback
+          const imageSrc = judge.image?.src || placeholderImg;
+          
+          return (
+            <SwiperSlide
+              key={`judge-${index}`}
+              className="h-full w-full"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="card">
+                <div className="relative flex flex-col items-center gap-y-4 text-left grayscale hover:filter-none md:filter">
+                  <div>
+                    <img
+                      src={imageSrc}
+                      alt={judge.name}
+                      onError={(e) => { e.target.src = placeholderImg; }}
+                      className="h-[430px] w-full object-cover md:h-[500px] md:w-[400px] lg:px-4"
+                    />
+                    <div className="pb-6 font-inter lg:px-4">
+                      <h1 className="text-lg font-bold">{judge.name}</h1>
+                      <h2 className="w-full text-base">{judge.lastEducation}</h2>
                     </div>
-                    <button
-                      className="cursor-pointer text-white underline"
-                      onClick={() => openDrawer(judge)}
-                    >
-                      Read More ...
-                    </button>
                   </div>
-                )}
+                  {hoveredIndex === index && (
+                    <div
+                      className={`absolute top-36 mx-2 w-72 bg-black p-5 text-white md:left-12 md:top-44 md:w-[70%]`}
+                    >
+                      <div className="h-[200px] md:h-[250px]">
+                        <p className="font-semi bold mb-10 line-clamp-9 text-sm md:text-base">
+                          {judge.description || "Informasi tidak tersedia"}
+                        </p>
+                      </div>
+                      <button
+                        className="cursor-pointer text-white underline"
+                        onClick={() => openDrawer(judge)}
+                      >
+                        Baca Selengkapnya ...
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          );
+        })}
         <div className="absolute -bottom-10 left-7 z-10 mb-5 flex h-28 items-center space-x-4 pt-10 lg:hidden">
           <div className="custom-pagination-judges" />
           <div className="swiper-button-next-judges cursor-pointer bg-transparent p-2">

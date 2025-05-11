@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 // Interface untuk props
 interface Props {
   props: {
-    icon: any;  // Path ke icon
+    icon: any;  // Pastikan ini adalah path ke imported icon, bukan string
     text: string;
   };
 }
@@ -31,7 +31,7 @@ const duplicatedSlides = [...slides, ...slides];
         >
           <div class="flex h-full flex-col items-center justify-center bg-black">
             <div class="flex h-full items-center gap-4 font-bungee">
-              {item.icon && (
+              {item.icon && typeof item.icon === 'object' ? (
                 <Image
                   src={item.icon}
                   alt="icons"
@@ -39,6 +39,10 @@ const duplicatedSlides = [...slides, ...slides];
                   height={29}
                   class="object-contain"
                 />
+              ) : (
+                <div class="w-[44px] h-[29px] flex items-center justify-center">
+                  <span class="text-white">★</span>
+                </div>
               )}
               <span class="whitespace-nowrap font-bungee text-[20px] font-medium text-page-white md:text-[24px]">
                 {item.text}

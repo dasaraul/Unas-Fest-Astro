@@ -10,6 +10,14 @@ import 'swiper/css/pagination';
 function FaqSwiper({ faqsData }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  if (!faqsData || faqsData.length === 0) {
+    return (
+      <div className="text-center p-8">
+        <p className="text-xl">Data FAQ belum tersedia.</p>
+      </div>
+    );
+  }
+
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.activeIndex);
   };
@@ -29,12 +37,13 @@ function FaqSwiper({ faqsData }) {
         modules={[Pagination, Navigation]}
         onSlideChange={handleSlideChange}
         className="faq-swiper"
+        key="faq-swiper"
       >
         {faqsData.map((faq, index) => {
           const isActive = index === activeIndex;
           return (
             <SwiperSlide
-              key={faq.index || index}
+              key={`faq-${faq.index || index}`}
               className="faq-swiper-slide w-[300px] md:w-[60%]"
             >
               <div

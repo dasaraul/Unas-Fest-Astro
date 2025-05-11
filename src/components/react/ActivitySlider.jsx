@@ -8,6 +8,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 function ActivitySlider({ posters }) {
+  if (!posters || posters.length === 0) {
+    return (
+      <div className="text-center p-8">
+        <p className="text-xl">Data poster belum tersedia.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="relative">
       <Swiper
@@ -22,10 +30,11 @@ function ActivitySlider({ posters }) {
         }}
         modules={[Pagination, Navigation]}
         className="overflow-hidden"
+        key="activity-slider-swiper"
       >
         {posters.map((poster) => (
           <SwiperSlide
-            key={poster.index}
+            key={`poster-${poster.index || poster.name}`}
             className="h-auto w-full max-w-[249px] md:max-w-[320px]"
           >
             <a href={poster.path} className="">

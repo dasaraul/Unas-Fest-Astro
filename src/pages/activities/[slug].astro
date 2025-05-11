@@ -12,6 +12,9 @@ import Slider from '../../components/Slider.astro';
 import toa from '../../assets/images/competition/toa.png';
 import { Download } from 'lucide-react';
 
+// Impor placeholder untuk ikon sliding jika diperlukan
+import placeholderIcon from '../../assets/icons/star.png';
+
 export function getStaticPaths() {
   return activities.map(competition => ({
     params: { slug: competition.path },
@@ -21,8 +24,21 @@ export function getStaticPaths() {
 
 const { competition } = Astro.props;
 const requirementsData = competition.requirements || [];
+
+// Menangani icon yang mungkin string (path) atau objek impor
+let iconSrc;
+try {
+  // Jika icon adalah objek yang valid dengan src
+  iconSrc = competition.infiniteSlidingIcon?.src 
+    ? competition.infiniteSlidingIcon 
+    : placeholderIcon;
+} catch (error) {
+  // Fallback ke placeholder jika ada masalah
+  iconSrc = placeholderIcon;
+}
+
 const InfiniteSlidingProps = {
-  icon: competition.infiniteSlidingIcon?.src || "",
+  icon: iconSrc,
   text: competition.infiniteSlidingText || "",
 };
 

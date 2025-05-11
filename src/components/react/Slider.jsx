@@ -76,10 +76,11 @@ const Slider = ({ requirements = [] }) => {
         }}
         modules={[Pagination, Navigation]}
         className="overflow-hidden"
+        key="requirements-slider"
       >
         {requirements.map((requirement) => (
           <SwiperSlide
-            key={requirement.index}
+            key={`requirement-${requirement.index}`}
             className="max-w-[285px] md:max-w-[380px]"
           >
             <RequirementCard 

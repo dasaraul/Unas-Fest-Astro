@@ -27,13 +27,14 @@ const { title, description, timelines = [] } = Astro.props;
     </p>
     
     {timelines.length > 0 ? (
-      <div class="h-full max-h-[1000px] w-full p-0">
+      <div class="h-full w-full p-0 overflow-y-auto max-h-[800px]">
         <div class="timeline-container relative w-full">
           {timelines.map((timeline, index) => (
             <div
               class={`timeline relative md:w-[50%] py-2.5 sm:px-12 md:px-1 lg:px-12 ${
                 index % 2 === 0 ? "right-timeline" : "left-timeline"
               }`}
+              key={`timeline-${index}`}
             >
               <div class="flex md:py-5 md:mx-10 relative">
                 {index % 2 === 0 ? (
